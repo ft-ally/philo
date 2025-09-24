@@ -1,0 +1,39 @@
+5 610 200 200 10
+1       Pass    [✓]     4800 5 is eating
+2       Pass    [✓]     4801 5 is eating
+3       Pass    [✓]     4800 5 is eating
+4       Pass    [✓]     4800 5 is eating
+5       Pass    [✓]     4800 5 is eating
+6       Fail    [x]     611 4 died
+7       Pass    [✓]     4800 5 is eating
+8       Fail    [x]     4611 4 died
+9       Fail    [x]     2011 2 died
+10      Pass    [✓]     4800 5 is eating
+	70 % correct
+
+
+31 599 200 200 10
+1       Pass    [✓]     1002 28 died
+2       Pass    [✓]     1803 24 died
+3       Pass    [✓]     600 30 died
+4       Fail    [x]     4001 8 is thinking
+5       Pass    [✓]     3004 18 died
+6       Fail    [x]     4001 10 is thinking
+7       Pass    [✓]     1402 26 died
+8       Fail    [x]     4001 31 is eating
+9       Fail    [x]     4001 31 is eating
+10      Pass    [✓]     801 29 died
+	60 % correct
+
+131 596 200 200 10
+1       Fail    [x]     4008 25 is sleeping
+2       Pass    [✓]     1000 128 died
+3       Fail    [x]     4209 95 is thinking
+4       Fail    [x]     4003 86 is thinking
+5       Pass    [✓]     1199 127 died
+6       Fail    [x]     4002 102 is thinking
+7       Fail    [x]     4002 69 is sleeping
+8       Pass    [✓]     603 130 died
+9       Fail    [x]     4017 24 is thinking
+10      Fail    [x]     4002 104 is thinking
+	30 % correct

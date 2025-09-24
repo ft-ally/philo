@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 13:05:46 by aalombro          #+#    #+#             */
-/*   Updated: 2025/07/26 16:49:19 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/09/24 17:22:08 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_sleep(t_philo *p, long long time)
 		current_time = ft_gettime();
 		if ((current_time - start_time) >= time)
 			break ;
-		if (!death_check(p))
+		if (!monitor_check(p))
 			return (0);
 		usleep(100);
 	}
@@ -50,7 +50,7 @@ int	error_check(t_data *d)
 	return (1);
 }
 
-int	death_check(t_philo *p)
+int	monitor_check(t_philo *p)
 {
 	int	res;
 

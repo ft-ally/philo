@@ -68,7 +68,7 @@ void		cleanup_philo(t_data *data, t_philo *p);
 
 //utils.c
 int			error_check(t_data *d);
-int			death_check(t_philo *p);
+int			monitor_check(t_philo *p);
 long long	ft_gettime(void);
 int			ft_sleep(t_philo *p, long long time);
 void		ft_print(t_philo *p, char *str);
