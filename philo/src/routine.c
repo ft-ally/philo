@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:10:43 by aalombro          #+#    #+#             */
-/*   Updated: 2025/09/24 18:41:16 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/09/24 18:54:37 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	odd_routine(t_philo *p)
 	if (!take_own_fork(p))
 		return (0);
 	if (!monitor_check(p))
-		return (0);
+		return (pthread_mutex_unlock(&p->fork), 0);
 	if (!take_next_fork(p))
 		return (pthread_mutex_unlock(&p->fork), 0);
 	if (!monitor_check(p))
@@ -43,7 +43,7 @@ static int	even_routine(t_philo *p)
 	if (!take_next_fork(p))
 		return (0);
 	if (!monitor_check(p))
-		return (0);
+		return (pthread_mutex_unlock(&p->next->fork), 0);
 	if (!take_own_fork(p))
 		return (pthread_mutex_unlock(&p->next->fork), 0);
 	if (!monitor_check(p))
