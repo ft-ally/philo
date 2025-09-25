@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:09:53 by aalombro          #+#    #+#             */
-/*   Updated: 2025/09/24 17:22:08 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/09/25 17:08:00 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	check_philos(t_philo *p, t_philo *head, int finished)
 
 	while (1)
 	{
-		usleep(100);
+		usleep(50);
 		pthread_mutex_lock(&p->meals_eaten_mutex);
 		is_done = (p->data->nmeals != -1 && p->meals_eaten >= p->data->nmeals);
 		pthread_mutex_unlock(&p->meals_eaten_mutex);
