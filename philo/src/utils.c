@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 13:05:46 by aalombro          #+#    #+#             */
-/*   Updated: 2025/09/26 13:04:43 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/09/30 14:46:41 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ int	monitor_check(t_philo *p)
 
 void	ft_print(t_philo *p, char *str)
 {
-	if (!monitor_check(p))
-		return ;			//check this part, its to stop printing 
 	pthread_mutex_lock(&p->data->print_mutex);
 	printf("%lld %d %s\n", time_stamp(p->data), p->seat, str);
 	pthread_mutex_unlock(&p->data->print_mutex);

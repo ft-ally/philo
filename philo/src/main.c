@@ -35,4 +35,3 @@ int	main(int argc, char **argv)
 	cleanup_philo(&data, philo);
 	return (0);
 }
-//addcleanup philo with some flags

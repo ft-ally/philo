@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:09:53 by aalombro          #+#    #+#             */
-/*   Updated: 2025/09/26 13:04:29 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/09/30 14:29:07 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	check_death(t_philo *p)
 
 	pthread_mutex_lock(&p->meal_time_mutex);
 	current_time = ft_gettime();
-	if ((current_time - p->last_meal_t) > p->data->die_time)
+	if ((current_time - p->last_meal_t) >= p->data->die_time)
 	{
 		pthread_mutex_lock(&p->data->death_mutex);
 		if (p->data->death == 0)

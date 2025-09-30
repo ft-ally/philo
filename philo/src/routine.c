@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:10:43 by aalombro          #+#    #+#             */
-/*   Updated: 2025/09/25 17:07:46 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/09/30 14:17:27 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,48 +63,51 @@ static int	not_finished_eating(t_philo *p)
 	return (1);
 }
 
-static void	set_last_meal_t(t_philo *p)
+static int	routine_loop(t_philo *p)
 {
-	pthread_mutex_lock(&p->meal_time_mutex);
-	p->last_meal_t = ft_gettime();
-	pthread_mutex_unlock(&p->meal_time_mutex);
+	if (p->seat % 2 != 0)
+	{
+		if (!odd_routine(p))
+			return (0);
+	}
+	else
+	{
+		if (!even_routine(p))
+			return (0);
+	}
+	if (monitor_check(p))
+	{
+		ft_print(p, "is thinking");
+		if (p->data->die_time <= p->data->eat_time + p->data->sleep_time + 10)
+			usleep(5);
+		else if (p->seat == p->data->philo_count)
+			usleep(500);
+		else if (p->seat % 2)
+			usleep(200);
+		else
+			usleep(100);
+	}
+	else
+		return (0);
+	return (1);
 }
+
 void	*routine(void *arg)
 {
 	t_philo	*p;
-	int		code;
 
 	p = (t_philo *)arg;
-	code = 1;
 	if (p->seat % 2)
 		usleep(1000);
-	set_last_meal_t(p);
-	while (code && not_finished_eating(p) && monitor_check(p))
+	pthread_mutex_lock(&p->meal_time_mutex);
+	p->last_meal_t = ft_gettime();
+	pthread_mutex_unlock(&p->meal_time_mutex);
+	while (not_finished_eating(p) && monitor_check(p))
 	{
-		if (!(code = monitor_check(p)))
+		if (!monitor_check(p))
 			return (NULL);
-		if (p->seat % 2 != 0)
-		{
-			if (!odd_routine(p))
-				return (NULL);
-		}
-		else
-		{
-			if (!even_routine(p))
-				return (NULL);
-		}
-		if (code && monitor_check(p))
-		{
-			ft_print(p, "is thinking");
-			if (p->data->die_time <= p->data->eat_time + p->data->sleep_time + 10)
-				usleep(5);
-			else if (p->seat == p->data->philo_count)
-				usleep(500);
-			else if (p->seat % 2)
-				usleep(200);
-			else
-				usleep(100);
-		}
+		if (!routine_loop(p))
+			return (NULL);
 	}
 	return (NULL);
 }

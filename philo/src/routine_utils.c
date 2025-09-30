@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:10:43 by aalombro          #+#    #+#             */
-/*   Updated: 2025/09/24 18:27:40 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/09/30 14:17:38 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	is_eating(t_philo *p)
 {
 	if (!monitor_check(p))
 		return (0);
-
 	pthread_mutex_lock(&p->meal_time_mutex);
 	p->last_meal_t = ft_gettime();
 	pthread_mutex_unlock(&p->meal_time_mutex);
