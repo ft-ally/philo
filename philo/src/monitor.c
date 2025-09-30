@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:09:53 by aalombro          #+#    #+#             */
-/*   Updated: 2025/09/25 17:08:00 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/09/26 13:04:29 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static int	check_death(t_philo *p)
 		pthread_mutex_lock(&p->data->death_mutex);
 		if (p->data->death == 0)
 		{
-			p->data->death = 1;
 			ft_print(p, "died");
+			p->data->death = 1;
 		}
 		pthread_mutex_unlock(&p->data->death_mutex);
 		pthread_mutex_unlock(&p->meal_time_mutex);
