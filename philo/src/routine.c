@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:10:43 by aalombro          #+#    #+#             */
-/*   Updated: 2025/09/30 14:17:27 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/09/30 15:25:14 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,11 @@ static int	even_routine(t_philo *p)
 	return (1);
 }
 
-static int	not_finished_eating(t_philo *p)
+int	not_finished_eating(t_philo *p)
 {
 	pthread_mutex_lock(&p->meals_eaten_mutex);
 	if (p->data->nmeals != -1 && p->meals_eaten >= p->data->nmeals)
 	{
-		p->done = 1;
 		pthread_mutex_unlock(&p->meals_eaten_mutex);
 		return (0);
 	}
@@ -75,7 +74,7 @@ static int	routine_loop(t_philo *p)
 		if (!even_routine(p))
 			return (0);
 	}
-	if (monitor_check(p))
+	if (not_finished_eating(p) && monitor_check(p))
 	{
 		ft_print(p, "is thinking");
 		if (p->data->die_time <= p->data->eat_time + p->data->sleep_time + 10)

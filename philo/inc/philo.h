@@ -57,6 +57,8 @@ int			init_philo(t_data *data, t_philo **p);
 void		*monitor_routine(void *arg);
 //routine.c
 void		*routine(void *arg);
+int			not_finished_eating(t_philo *p);
+
 //routine_utils.c
 int			take_own_fork(t_philo *p);
 int			take_next_fork(t_philo *p);

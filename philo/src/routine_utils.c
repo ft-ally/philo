@@ -6,7 +6,7 @@
 /*   By: aalombro <aalombro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:10:43 by aalombro          #+#    #+#             */
-/*   Updated: 2025/09/30 14:17:38 by aalombro         ###   ########.fr       */
+/*   Updated: 2025/09/30 15:05:32 by aalombro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	unlock_forks(t_philo *p, int even)
 
 int	is_sleeping(t_philo *p)
 {
+	if (!not_finished_eating(p))
+		return (0);
 	if (!monitor_check(p))
 		return (0);
 	ft_print(p, "is sleeping");
